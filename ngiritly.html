@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ngiritly v2.0 - Detail Aplikasi & Unduhan | Unimed Dev</title>
+    <style>
+        /* --- RESET & VARIABEL UTAMA --- */
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        html { scroll-behavior: smooth; }
+
+        :root {
+            --primary-color: #1a446c; /* Menyesuaikan warna dasar icon biru gelap */
+            --accent-green: #27ae60;
+            --accent-blue: #2980b9;
+            --bg-light: #f4f6f9;
+            --text-dark: #2c3e50;
+            --text-muted: #7f8c8d;
+            --white: #ffffff;
+        }
+
+        body { background-color: var(--bg-light); color: var(--text-dark); line-height: 1.6; padding-top: 70px; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+
+        /* --- HEADER & NAVIGASI --- */
+        header { background-color: var(--white); box-shadow: 0 2px 10px rgba(0,0,0,0.05); position: fixed; top: 0; left: 0; right: 0; z-index: 100; height: 70px; }
+        .nav-container { display: flex; justify-content: space-between; align-items: center; height: 100%; }
+        .logo { font-size: 22px; font-weight: bold; color: var(--primary-color); text-decoration: none; display: flex; align-items: center; gap: 8px; }
+        
+        .nav-menu { display: flex; list-style: none; gap: 20px; }
+        .nav-menu a { text-decoration: none; color: var(--text-dark); font-weight: 500; transition: color 0.2s; padding: 8px 12px; border-radius: 4px; }
+        .nav-menu a:hover { color: var(--primary-color); background: #eef2ff; }
+
+        /* --- LAYOUT UTAMA --- */
+        .main-layout { display: grid; grid-template-columns: 2fr 1fr; gap: 30px; margin: 40px auto; }
+
+        /* --- AREA DETAIL APLIKASI --- */
+        .content-area { background: var(--white); padding: 40px; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.02); }
+        
+        .app-hero { display: flex; gap: 30px; align-items: center; border-bottom: 1px solid #eee; padding-bottom: 30px; margin-bottom: 30px; }
+        .app-icon-img { width: 120px; height: 120px; border-radius: 24px; box-shadow: 0 8px 16px rgba(0,0,0,0.1); object-fit: cover; }
+        
+        .app-meta h1 { font-size: 32px; color: var(--text-dark); margin-bottom: 5px; }
+        .app-meta .version-tag { display: inline-block; background: #eef2ff; color: var(--primary-color); padding: 2px 10px; border-radius: 20px; font-size: 13px; font-weight: bold; margin-bottom: 15px; }
+
+        /* Grid Tombol Download Utama */
+        .download-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-top: 10px; }
+        .btn-dl { display: flex; align-items: center; justify-content: center; gap: 10px; text-decoration: none; color: var(--white); padding: 14px; font-weight: bold; border-radius: 8px; transition: all 0.2s; text-align: center; font-size: 15px; }
+        .btn-android { background-color: var(--accent-green); box-shadow: 0 4px 12px rgba(39, 174, 96, 0.2); }
+        .btn-android:hover { background-color: #219653; transform: translateY(-2px); }
+        .btn-pc { background-color: var(--accent-blue); box-shadow: 0 4px 12px rgba(41, 128, 185, 0.2); }
+        .btn-pc:hover { background-color: #2471a3; transform: translateY(-2px); }
+
+        /* Seksi Informasi & Fitur */
+        .section-title { font-size: 20px; margin: 30px 0 15px 0; color: var(--text-dark); border-left: 4px solid var(--primary-color); padding-left: 10px; }
+        p { margin-bottom: 15px; text-align: justify; }
+        .features-list { margin-left: 20px; margin-bottom: 30px; }
+        .features-list li { margin-bottom: 8px; }
+
+        /* --- SEKSI VERSI TERDAHULU (PREVIOUS VERSION) --- */
+        .previous-version-box { background: #f8fafc; border: 1px dashed #cbd5e1; padding: 25px; border-radius: 10px; margin-top: 40px; }
+        .previous-version-box h3 { font-size: 18px; margin-bottom: 10px; color: var(--text-dark); }
+        .btn-old-version { display: inline-flex; align-items: center; gap: 8px; text-decoration: none; background: #64748b; color: var(--white); padding: 10px 20px; font-size: 14px; font-weight: bold; border-radius: 6px; transition: background 0.2s; }
+        .btn-old-version:hover { background: #475569; }
+
+        /* --- SIDEBAR INFO --- */
+        .sidebar-area { display: flex; flex-direction: column; gap: 20px; }
+        .sidebar-card { background: var(--white); padding: 25px; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.02); }
+        .sidebar-card h3 { font-size: 18px; margin-bottom: 15px; border-bottom: 1px solid #eee; padding-bottom: 8px; }
+        
+        .info-table { width: 100%; border-collapse: collapse; font-size: 14px; }
+        .info-table tr { border-bottom: 1px solid #f5f5f5; }
+        .info-table td { padding: 10px 0; }
+        .info-table td:first-child { font-weight: bold; color: var(--text-muted); width: 45%; }
+        .info-table td:last-child { text-align: right; color: var(--text-dark); }
+
+        /* --- FOOTER & COPYRIGHT --- */
+        footer { background-color: #2c3e50; color: #ecf0f1; padding: 40px 0 20px 0; margin-top: 60px; }
+        .footer-links { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 20px; margin-bottom: 30px; border-bottom: 1px solid #34495e; padding-bottom: 30px; }
+        .footer-brand { flex: 1; min-width: 250px; }
+        .footer-brand h3 { color: var(--primary-color); margin-bottom: 10px; }
+        .footer-brand p { font-size: 14px; color: #bdc3c7; max-width: 400px; }
+        .footer-nav { min-width: 150px; }
+        .footer-nav h4 { margin-bottom: 15px; font-size: 16px; color: var(--white); }
+        .footer-nav ul { list-style: none; }
+        .footer-nav ul li a { color: #bdc3c7; text-decoration: none; font-size: 14px; transition: color 0.2s; }
+        .footer-nav ul li a:hover { color: var(--white); }
+        
+        .copyright { text-align: center; font-size: 13px; color: #95a5a6; padding-top: 10px; }
+
+        /* --- RESPONSIVE DESIGN (HP) --- */
+        @media (max-width: 768px) {
+            .main-layout { grid-template-columns: 1fr; gap: 20px; margin: 20px auto; }
+            .app-hero { flex-direction: column; text-align: center; }
+            .download-grid { grid-template-columns: 1fr; }
+            .footer-links { flex-direction: column; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container nav-container">
+            <a href="index.html" class="logo">🚀 Unimed Dev</a>
+            <ul class="nav-menu">
+                <li><a href="index.html">Home</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <div class="container main-layout">
+        
+        <main class="content-area">
+            <div class="app-hero">
+                <img src="app_icon.png" alt="Ngiritly Icon" class="app-icon-img">
+                <div class="app-meta">
+                    <h1>Ngiritly App</h1>
+                    <span class="version-tag">Versi 2.0</span>
+                    
+                    <div class="download-grid">
+                        <a href="https://www.mediafire.com/file/bp2mq67alvp8wb3/app-arm64-v8a-release.apk/file" target="_blank" class="btn-dl btn-android">
+                            🤖 Download for Android
+                        </a>
+                        <a href="http://www.mediafire.com/file/01pise1qkrelea0/Ngiritly_3.0.exe" target="_blank" class="btn-dl btn-pc">
+                            💻 Download for PC
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <h2 class="section-title">Deskripsi Aplikasi</h2>
+            <p>Ngiritly adalah sistem pencatatan keuangan pintar besutan Unimed Dev yang dirancang untuk membantu mengontrol pengeluaran kas harian secara berkala. Melalui kalkulasi yang akurat, aplikasi ini mendampingi pengguna dalam mengelola anggaran finansial secara disiplin dan hemat.</p>
+
+            <h2 class="section-title">Fitur Utama Versi 2.0</h2>
+            <ul class="features-list">
+                <li><b>Multiplatform Support:</b> Kini tersedia dan dioptimalkan penuh untuk perangkat Android maupun komputer/PC.</li>
+                <li><b>Pencatatan Instan:</b> Manajemen input pos pengeluaran dan pemasukan harian yang responsif.</li>
+                <li><b>Arsitektur Ringan:</b> Dikembangkan secara efisien sehingga berjalan mulus tanpa membebani performa memori perangkat.</li>
+            </ul>
+
+            <div class="previous-version-box">
+                <h3>Versi Terdahulu (Previous Version)</h3>
+                <p style="font-size: 14px; color: var(--text-muted); margin-bottom: 15px;">Jika Anda membutuhkan paket instalasi kompatibilitas universal untuk tipe perangkat lama, silakan unduh versi di bawah ini:</p>
+                <a href="http://www.mediafire.com/file/kpjkj78l6anocjt/app-release.apk" target="_blank" class="btn-old-version">
+                    📦 Ngiritly for All Android Version
+                </a>
+            </div>
+        </main>
+
+        <aside class="sidebar-area">
+            <div class="sidebar-card">
+                <h3>Detail Berkas v2.0</h3>
+                <table class="info-table">
+                    <tr><td>Nama Aplikasi</td><td>Ngiritly</td></tr>
+                    <tr><td>Status Rilis</td><td>Stable v2.0</td></tr>
+                    <tr><td>Lisensi</td><td>Gratis</td></tr>
+                    <tr><td>Developer</td><td>Unimed Dev</td></tr>
+                    <tr><td>OS Android</td><td>Android 5.0+</td></tr>
+                    <tr><td>OS PC</td><td>Windows 10/11</td></tr>
+                </table>
+            </div>
+        </aside>
+    </div>
+
+    <footer>
+        <div class="container">
+            <div class="footer-links">
+                <div class="footer-brand">
+                    <h3>Unimed Dev Projects</h3>
+                    <p>Ruang pamer portofolio digital dan eksplorasi pemrograman aplikasi mobile secara kreatif.</p>
+                </div>
+                
+                <div class="footer-nav">
+                    <h4>Navigasi</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-nav">
+                    <h4>Didukung Oleh</h4>
+                    <ul>
+                        <li><a href="https://developer.android.com/studio" target="_blank">Android Studio</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2026 Unimed Dev. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
