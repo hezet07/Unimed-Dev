@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My App Hub - Portofolio Aplikasi Android</title>
+    <title>Unimed Dev - Portofolio Aplikasi Android</title>
     <style>
         /* --- RESET & VARIABEL UTAMA --- */
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
@@ -109,9 +109,10 @@
 </head>
 <body>
 
+    <!-- ================= HEADER & NAVIGASI ================= -->
     <header>
         <div class="container nav-container">
-            <a href="#" class="logo">🚀 AppSpace</a>
+            <a href="#" class="logo">🚀 Unimed Dev</a>
             
             <button class="menu-toggle" id="mobile-menu">
                 <span></span>
@@ -127,28 +128,32 @@
         </div>
     </header>
 
+    <!-- ================= KONTEN UTAMA & SIDEBAR ================= -->
     <div class="container main-layout">
         
+        <!-- BAGIAN KIRI: UTAMA -->
         <main class="content-area">
             <section class="hero-section">
                 <h1>Selamat Datang di Portofolio Aplikasi</h1>
                 <p>Platform mandiri untuk mempublikasikan dan membagikan berbagai proyek aplikasi Android hasil eksperimen koding yang dikembangkan secara personal.</p>
             </section>
 
+            <!-- SEKSI DAFTAR APLIKASI -->
             <section id="aplikasi">
                 <h2 class="section-title">Aplikasi Android Tersedia</h2>
                 <div class="project-grid">
                     
+                    <!-- Card Proyek 1: Ngiritly -->
                     <div class="project-card">
                         <div class="project-icon">💰</div>
                         <div class="project-info">
                             <h3>Ngiritly App</h3>
                             <p>Aplikasi manajemen dan pencatatan finansial praktis untuk melacak pengeluaran kas harian agar anggaran tetap terkontrol.</p>
-                            
                             <a href="ngiritly.html" class="btn-view-project">Lihat Selengkapnya &rarr;</a>
                         </div>
                     </div>
 
+                    <!-- Card Proyek 2: Placeholder Aplikasi Selanjutnya -->
                     <div class="project-card">
                         <div class="project-icon">⚙️</div>
                         <div class="project-info">
@@ -162,6 +167,7 @@
             </section>
         </main>
 
+        <!-- BAGIAN KANAN: SIDEBAR -->
         <aside class="sidebar-area">
             <div class="sidebar-card" id="tentang">
                 <h3>Tentang Platform</h3>
@@ -171,11 +177,12 @@
         </aside>
     </div>
 
+    <!-- ================= FOOTER & COPYRIGHT ================= -->
     <footer>
         <div class="container">
             <div class="footer-links">
                 <div class="footer-brand">
-                    <h3>AppSpace Projects</h3>
+                    <h3>Unimed Dev Projects</h3>
                     <p>Ruang pamer portofolio digital dan eksplorasi pemrograman aplikasi mobile secara kreatif.</p>
                 </div>
                 
@@ -188,21 +195,24 @@
                     </ul>
                 </div>
 
+                <!-- Didukung Oleh: Langsung mengarah ke laman download/studio Android Studio -->
                 <div class="footer-nav">
                     <h4>Didukung Oleh</h4>
                     <ul>
-                        <li><a href="https://developer.android.com/" target="_blank">Android Studio</a></li>
+                        <li><a href="https://developer.android.com/studio" target="_blank">Android Studio</a></li>
                     </ul>
                 </div>
             </div>
             
+            <!-- Hak Cipta Unimed Dev 2026 -->
             <div class="copyright">
-                <p>&copy; 2026 AppSpace. All Rights Reserved.</p>
+                <p>&copy; 2026 Unimed Dev. All Rights Reserved.</p>
             </div>
         </div>
     </footer>
 
-    <script {
+    <!-- ================= LOGIKA INTERAKTIF (JAVASCRIPT) ================= -->
+    <script>
         // Logika Hamburger Menu (Tampilan HP)
         const mobileMenuBtn = document.getElementById('mobile-menu');
         const navList = document.getElementById('nav-list');
